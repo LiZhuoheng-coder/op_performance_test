@@ -37,7 +37,7 @@ void op_test_sub_run(int batch_size)
     params.scalar.min = -100.0;
     params.scalar.max = 100.0;
 
-    printf("OP: Add Test \n");
+    printf("OP: Sub Test \n");
     // 测试scalar
     printf("Test scalar\n");
     int64_t start = clock();

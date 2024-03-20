@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
     printf("Batch Size: 1000000\n");
     op_test_add_run(1000000);
     printf("=====================================\n");
-    // 测试add
+    // 测试sub
     printf("Batch Size: 1000\n");
     op_test_sub_run(1000);
     printf("Batch Size: 10000\n");
