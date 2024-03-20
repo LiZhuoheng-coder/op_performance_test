@@ -33,20 +33,20 @@ int main(int argc, char *argv[]) {
     op_test_gemm_rule_1x4_run(100);
     printf("Batch Size: 1000\n");
     op_test_gemm_rule_1x4_run(1000);
-    printf("Batch Size: 5000\n");
-    op_test_gemm_rule_1x4_run(5000);
-    printf("Batch Size: 10000\n");
-    op_test_gemm_rule_1x4_run(10000);
+    // printf("Batch Size: 5000\n");
+    // op_test_gemm_rule_1x4_run(5000);
+    // printf("Batch Size: 10000\n");
+    // op_test_gemm_rule_1x4_run(10000);
     printf("=====================================\n");
     // 测试gemm rule 2x4
     printf("Batch Size: 100\n");
     op_test_gemm_rule_2x4_run(100);
     printf("Batch Size: 1000\n");
     op_test_gemm_rule_2x4_run(1000);
-    printf("Batch Size: 5000\n");
-    op_test_gemm_rule_2x4_run(5000);
-    printf("Batch Size: 10000\n");
-    op_test_gemm_rule_2x4_run(10000);
+    // printf("Batch Size: 5000\n");
+    // op_test_gemm_rule_2x4_run(5000);
+    // printf("Batch Size: 10000\n");
+    // op_test_gemm_rule_2x4_run(10000);
     printf("=====================================\n");
     // 测试prelu
     printf("Batch Size: 1000\n");
@@ -69,25 +69,25 @@ int main(int argc, char *argv[]) {
     // op_test_sigmoid_run(1000000);
     // printf("=====================================\n");
     // 测试max()
-    // printf("Batch Size: 1000\n");
-    // op_test_max_run(1000);
-    // printf("Batch Size: 10000\n");
-    // op_test_max_run(10000);
-    // printf("Batch Size: 100000\n");
-    // op_test_max_run(100000);
-    // printf("Batch Size: 1000000\n");
-    // op_test_max_run(1000000);
-    // printf("=====================================\n");
+    printf("Batch Size: 1000\n");
+    op_test_max_run(1000);
+    printf("Batch Size: 10000\n");
+    op_test_max_run(10000);
+    printf("Batch Size: 100000\n");
+    op_test_max_run(100000);
+    printf("Batch Size: 1000000\n");
+    op_test_max_run(1000000);
+    printf("=====================================\n");
     // 测试min()
-    // printf("Batch Size: 1000\n");
-    // op_test_min_run(1000);
-    // printf("Batch Size: 10000\n");
-    // op_test_min_run(10000);
-    // printf("Batch Size: 100000\n");
-    // op_test_min_run(100000);
-    // printf("Batch Size: 1000000\n");
-    // op_test_min_run(1000000);
-    // printf("=====================================\n");
+    printf("Batch Size: 1000\n");
+    op_test_min_run(1000);
+    printf("Batch Size: 10000\n");
+    op_test_min_run(10000);
+    printf("Batch Size: 100000\n");
+    op_test_min_run(100000);
+    printf("Batch Size: 1000000\n");
+    op_test_min_run(1000000);
+    printf("=====================================\n");
     // 测试add
     printf("Batch Size: 1000\n");
     op_test_add_run(1000);
