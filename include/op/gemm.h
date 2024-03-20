@@ -5,6 +5,8 @@
 #include "seagull_op.h"
 
 void op_test_gemm_run(int batch_size);
+void op_test_gemm_rule_1x4_run(int batch_size);
+void op_test_gemm_rule_2x4_run(int batch_size);
 
 union xnn_f32_default_params {
   char _; // Dummy member variable to comply with the C standard
@@ -14,6 +16,12 @@ union xnn_f32_default_params {
   } avx;
 #endif  // XNN_ARCH_X86 || XNN_ARCH_X86_64
 };
+
+// ReLU: serves to differentiate pointer types for micro-kernels with fused ReLU activation.
+union xnn_f32_relu_params {
+    char _; // Dummy member variable to comply with the C standard
+};
+
 
 void op_test_gemm_run(int batch_size);
 
@@ -42,6 +50,52 @@ void xnn_f32_gemm_ukernel_1x4__scalar(
     size_t cn_stride,
     const union xnn_f32_default_params params[restrict XNN_MIN_ELEMENTS(1)]);
 
+void xnn_f32_gemm_relu_ukernel_1x4__rvv_u1v(
+    size_t mr,
+    size_t nc,
+    size_t kc,
+    const float* restrict a,
+    size_t a_stride,
+    const float* restrict w,
+    float* restrict c,
+    size_t cm_stride,
+    size_t cn_stride,
+    const union xnn_f32_relu_params params[restrict XNN_MIN_ELEMENTS(1)]);
 
+void xnn_f32_gemm_relu_ukernel_1x4__scalar(
+    size_t mr,
+    size_t nc,
+    size_t kc,
+    const float* restrict a,
+    size_t a_stride,
+    const float* restrict w,
+    float* restrict c,
+    size_t cm_stride,
+    size_t cn_stride,
+    const union xnn_f32_relu_params params[restrict XNN_MIN_ELEMENTS(1)]);
+
+void xnn_f32_gemm_relu_ukernel_2x4__rvv_u1v(
+    size_t mr,
+    size_t nc,
+    size_t kc,
+    const float* restrict a,
+    size_t a_stride,
+    const float* restrict w,
+    float* restrict c,
+    size_t cm_stride,
+    size_t cn_stride,
+    const union xnn_f32_relu_params params[restrict XNN_MIN_ELEMENTS(1)]);
+
+void xnn_f32_gemm_relu_ukernel_2x4__scalar(
+    size_t mr,
+    size_t nc,
+    size_t kc,
+    const float* restrict a,
+    size_t a_stride,
+    const float* restrict w,
+    float* restrict c,
+    size_t cm_stride,
+    size_t cn_stride,
+    const union xnn_f32_relu_params params[restrict XNN_MIN_ELEMENTS(1)]);
 
 #endif
