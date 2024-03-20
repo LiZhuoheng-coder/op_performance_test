@@ -37,8 +37,8 @@ void op_test_prelu_run(int batch_size)
         weights[i] = rand() % 100;
     }
 
+
     printf("OP: Prelu Test \n");
-    printf("=====================================\n");
     // 测试scalar
     printf("Test scalar\n");
     int64_t start = clock();
@@ -52,6 +52,7 @@ void op_test_prelu_run(int batch_size)
     xnn_f32_prelu_ukernel__rvv_2x8(rows, channels, input, channels, weights, output, channels);
     end = clock();
     printf("Time: %f ms\n", (end - start) * 1.0 / CLOCKS_PER_SEC * 1000);
+    printf("-------------------------------------\n");
 
     free(input);
     free(output);

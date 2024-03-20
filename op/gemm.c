@@ -34,8 +34,9 @@ void op_test_gemm_run(int batch_size)
     }
 
     union xnn_f32_default_params params;
-    printf("OP: GEMM Test \n");
-    printf("=====================================\n");
+\
+    printf("OP: GEMM 1X4 Test \n");
+
     // 测试scalar
     printf("Test scalar\n");
     int64_t start = clock();
@@ -49,7 +50,8 @@ void op_test_gemm_run(int batch_size)
     xnn_f32_gemm_ukernel_1x4__rvv_u1v(mr, nc, kc, a, 1, w, c, batch_size, batch_size, &params);
     end = clock();
     printf("Time: %f ms\n", (end - start) * 1.0 / CLOCKS_PER_SEC * 1000);
-
+    printf("-------------------------------------\n");
+    
     free(a);
     free(w);
     free(c);

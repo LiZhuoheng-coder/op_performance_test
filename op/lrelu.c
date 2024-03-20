@@ -29,8 +29,9 @@ void op_test_lrelu_run(int batch_size)
 
     union xnn_f32_lrelu_params params;
     params.scalar.slope = 0.1;
+    
     printf("OP: Leaky Relu Test \n");
-    printf("=====================================\n");
+
     // 测试scalar
     printf("Test scalar\n");
     int64_t start = clock();
@@ -43,6 +44,7 @@ void op_test_lrelu_run(int batch_size)
     xnn_f32_vlrelu_ukernel__rvv_u8v(batch_size * sizeof(float), input, output, &params);
     end = clock();
     printf("Time: %f ms\n", (end - start) * 1.0 / CLOCKS_PER_SEC * 1000);
+    printf("-------------------------------------\n");
 
     free(input);
     free(output);

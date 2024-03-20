@@ -49,8 +49,8 @@ void op_test_sigmoid_run(int batch_size)
     params.scalar_rr2_lut64_p2.one = 0x1.000000p+0;
     params.scalar_rr2_lut64_p2.denorm_cutoff = 0x1.5d589ep-9;
 
+
     printf("OP: Sigmoid Test \n");
-    printf("=====================================\n");
     // 测试scalar
     printf("Test scalar\n");
     int64_t start = clock();
@@ -63,6 +63,7 @@ void op_test_sigmoid_run(int batch_size)
     xnn_f32_vsigmoid_ukernel__rvv(batch_size * sizeof(float), input, output, &params);
     end = clock();
     printf("Time: %f ms\n", (end - start) * 1.0 / CLOCKS_PER_SEC * 1000);
+    printf("-------------------------------------\n");
 
     free(input);
     free(output);
