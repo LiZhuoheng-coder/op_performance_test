@@ -9,14 +9,24 @@
 
 void op_test_lrelu_run(int batch_size)
 {
-    // 准备测试数据
+    // 准备测试数据 
     srand(time(NULL));
-    float input[batch_size];
+    int alignment = 64; // 对齐字节
+
+
+    float* input = (float*)aligned_alloc(alignment, batch_size * sizeof(float));
+    float* output = (float*)aligned_alloc(alignment, batch_size * sizeof(float));
+    // 确保内存分配成功
+    if (input == NULL || output == NULL) {
+        perror("aligned_alloc failed");
+        exit(EXIT_FAILURE);
+    }
+
     for (size_t i = 0; i < batch_size; i++)
     {
         input[i] = rand() % 100;
     }
-    float output[batch_size];
+
     union xnn_f32_lrelu_params params;
     params.scalar.slope = 0.1;
     printf("OP: Leaky Relu Test \n");
@@ -33,6 +43,9 @@ void op_test_lrelu_run(int batch_size)
     xnn_f32_vlrelu_ukernel__rvv_u8v(batch_size * sizeof(float), input, output, &params);
     end = clock();
     printf("Time: %f ms\n", (end - start) * 1.0 / CLOCKS_PER_SEC * 1000);
+
+    free(input);
+    free(output);
 }
 
 

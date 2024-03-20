@@ -13,9 +13,11 @@ else()
     set(CMAKE_C_COMPILER  riscv64-unknown-linux-gnu-gcc)
 endif()
 
-set(CMAKE_C_FLAGS_INIT "-march=rv64imafdcv0p7_zfh_xtheadcv1p0 -mabi=lp64d")
-set(CMAKE_CXX_FLAGS_INIT "-march=rv64imafdcv0p7_zfh_xtheadcv1p0 -mabi=lp64d")
+set(CMAKE_C_FLAGS_INIT "-march=rv64imafdcv0p7_zfh_xtheadcv1p0 -mabi=lp64d -D__riscv_vector_071 -mrvv-vector-bits=128")
+set(CMAKE_CXX_FLAGS_INIT "-march=rv64imafdcv0p7_zfh_xtheadcv1p0 -mabi=lp64d -D__riscv_vector_071 -mrvv-vector-bits=128")
 
+set(CMAKE_C_FLAGS "-O3 -march=rv64imafdcv0p7_zfh_xtheadcv1p0 -mabi=lp64d -D__riscv_vector_071 -mrvv-vector-bits=128")
+set(CMAKE_CXX_FLAGS "-O3 -march=rv64imafdcv0p7_zfh_xtheadcv1p0 -mabi=lp64d -D__riscv_vector_071 -mrvv-vector-bits=128")
 
 project(seagull_op_test)
 
