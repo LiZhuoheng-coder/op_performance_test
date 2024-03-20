@@ -163,7 +163,7 @@ void xnn_f32_vsub_minmax_ukernel__rvv_u8v(
   // 逐批处理
   for (size_t i = 0; i < size; i += vl) {
     // 动态计算向量长度（VL），这次基于剩余的元素数量
-    size_t vl = vsetvl_e32m8(size - i);
+    vl = vsetvl_e32m8(size - i);
 
     // 加载输入向量
     vfloat32m8_t va = vle32_v_f32m8(input_a + i, vl);
