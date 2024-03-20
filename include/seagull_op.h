@@ -8,6 +8,8 @@
 #include "op/lrelu.h"
 #include "op/prelu.h"
 #include "op/sigmoid.h"
+#include "op/max.h"
+#include "op/min.h"
 
 
 typedef enum {

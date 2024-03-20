@@ -48,6 +48,28 @@ int main(int argc, char *argv[]) {
     // printf("Batch Size: 1000000\n");
     // op_test_sigmoid_run(1000000);
     // printf("=====================================\n");
+    // 测试max()
+    // printf("Batch Size: 1000\n");
+    // op_test_max_run(1000);
+    // printf("Batch Size: 10000\n");
+    // op_test_max_run(10000);
+    // printf("Batch Size: 100000\n");
+    // op_test_max_run(100000);
+    // printf("Batch Size: 1000000\n");
+    // op_test_max_run(1000000);
+    // printf("=====================================\n");
+    // 测试min()
+    // printf("Batch Size: 1000\n");
+    // op_test_min_run(1000);
+    // printf("Batch Size: 10000\n");
+    // op_test_min_run(10000);
+    // printf("Batch Size: 100000\n");
+    // op_test_min_run(100000);
+    // printf("Batch Size: 1000000\n");
+    // op_test_min_run(1000000);
+    // printf("=====================================\n");
+
+
     
 
 
