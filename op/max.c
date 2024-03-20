@@ -12,9 +12,9 @@ void op_test_max_run(int batch_size)
     srand(time(NULL));
     int alignment = 64; // 对齐字节
 
-    float* input_a = (float*)aligned_alloc(alignment, batch_size * sizeof(float) * sizeof(float));
-    float* input_b = (float*)aligned_alloc(alignment, batch_size * sizeof(float) * sizeof(float));
-    float* output = (float*)aligned_alloc(alignment, batch_size * sizeof(float) * sizeof(float));
+    float* input_a = (float*)aligned_alloc(alignment, batch_size * sizeof(float));
+    float* input_b = (float*)aligned_alloc(alignment, batch_size * sizeof(float));
+    float* output = (float*)aligned_alloc(alignment, batch_size * sizeof(float));
 
     // 确保内存分配成功
     if (input_a == NULL || input_b == NULL || output == NULL)
@@ -76,8 +76,10 @@ void xnn_f32_vmax_ukernel__rvv_u1v(
   assert(input_b != NULL);
   assert(output != NULL);
 
-  while (batch > 0) {
-      size_t vl = vsetvl_e32m1(batch);       // 设置向量寄存器每次操作的元素个数
+  size_t size = batch / sizeof(float);
+
+  while (size > 0) {
+      size_t vl = vsetvl_e32m1(size);       // 设置向量寄存器每次操作的元素个数
       vfloat32m1_t va = vle32_v_f32m1(input_a, vl); // 从数组a中加载vl个元素到向量寄存器va中
       vfloat32m1_t vb = vle32_v_f32m1(input_b, vl); // 从数组b中加载vl个元素到向量寄存器vb中
       vfloat32m1_t vc = vfmax_vv_f32m1(va, vb, vl);   // 向量寄存器va和向量寄存器vb中vl个元素对应取max，结果为vc
@@ -86,7 +88,7 @@ void xnn_f32_vmax_ukernel__rvv_u1v(
       input_a += vl;
       input_b += vl;
       output += vl;
-      batch -= vl;
+      size -= vl;
   }
 }
 
