@@ -23,10 +23,10 @@ int main(int argc, char *argv[]) {
     op_test_gemm_run(100);
     printf("Batch Size: 1000\n");
     op_test_gemm_run(1000);
-    printf("Batch Size: 5000\n");
-    op_test_gemm_run(5000);
-    printf("Batch Size: 10000\n");
-    op_test_gemm_run(10000);
+    // printf("Batch Size: 5000\n");
+    // op_test_gemm_run(5000);
+    // printf("Batch Size: 10000\n");
+    // op_test_gemm_run(10000);
     printf("=====================================\n");
     // 测试prelu
     printf("Batch Size: 1000\n");
@@ -68,6 +68,18 @@ int main(int argc, char *argv[]) {
     // printf("Batch Size: 1000000\n");
     // op_test_min_run(1000000);
     // printf("=====================================\n");
+    // 测试mul
+    printf("Batch Size: 1000\n");
+    op_test_mul_run(1000);
+    printf("Batch Size: 10000\n");
+    op_test_mul_run(10000);
+    printf("Batch Size: 100000\n");
+    op_test_mul_run(100000);
+    printf("Batch Size: 1000000\n");
+    op_test_mul_run(1000000);
+    printf("=====================================\n");
+
+
 
 
     
