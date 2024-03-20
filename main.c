@@ -28,6 +28,26 @@ int main(int argc, char *argv[]) {
     printf("Batch Size: 10000\n");
     op_test_gemm_run(10000);
     printf("=====================================\n");
+    // 测试gemm rule 1x4
+    printf("Batch Size: 100\n");
+    op_test_gemm_rule_1x4_run(100);
+    printf("Batch Size: 1000\n");
+    op_test_gemm_rule_1x4_run(1000);
+    printf("Batch Size: 5000\n");
+    op_test_gemm_rule_1x4_run(5000);
+    printf("Batch Size: 10000\n");
+    op_test_gemm_rule_1x4_run(10000);
+    printf("=====================================\n");
+    // 测试gemm rule 2x4
+    printf("Batch Size: 100\n");
+    op_test_gemm_rule_2x4_run(100);
+    printf("Batch Size: 1000\n");
+    op_test_gemm_rule_2x4_run(1000);
+    printf("Batch Size: 5000\n");
+    op_test_gemm_rule_2x4_run(5000);
+    printf("Batch Size: 10000\n");
+    op_test_gemm_rule_2x4_run(10000);
+    printf("=====================================\n");
     // 测试prelu
     printf("Batch Size: 1000\n");
     op_test_prelu_run(1000);
