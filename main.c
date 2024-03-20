@@ -78,6 +78,16 @@ int main(int argc, char *argv[]) {
     printf("Batch Size: 1000000\n");
     op_test_mul_run(1000000);
     printf("=====================================\n");
+    // 测试div
+    printf("Batch Size: 1000\n");
+    op_test_div_run(1000);
+    printf("Batch Size: 10000\n");
+    op_test_div_run(10000);
+    printf("Batch Size: 100000\n");
+    op_test_div_run(100000);
+    printf("Batch Size: 1000000\n");
+    op_test_div_run(1000000);
+    printf("=====================================\n");
 
 
 

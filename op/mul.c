@@ -6,6 +6,8 @@
 
 #include "op/mul.h"
 
+
+
 void op_test_mul_run(int batch_size)
 {
     // 准备测试数据
@@ -34,7 +36,7 @@ void op_test_mul_run(int batch_size)
         input_b[i] = rand() % 100;
     }
 
-    union xnn_f32_minmax_params params;
+    union xnn_f32_mul_minmax_params params;
     params.scalar.min = -100.0;
     params.scalar.max = 100.0;
 
@@ -64,7 +66,7 @@ void xnn_f32_vmul_minmax_ukernel__rvv_u8v(
     const float* input_a,
     const float* input_b,
     float* output,
-    const union xnn_f32_minmax_params params[restrict XNN_MIN_ELEMENTS(1)])
+    const union xnn_f32_mul_minmax_params params[restrict XNN_MIN_ELEMENTS(1)])
 {
   assert(batch != 0);
   assert(batch % sizeof(float) == 0);
@@ -103,7 +105,7 @@ void xnn_f32_vmul_minmax_ukernel__scalar_u8(
     const float* input_a,
     const float* input_b,
     float* output,
-    const union xnn_f32_minmax_params params[restrict XNN_MIN_ELEMENTS(1)])
+    const union xnn_f32_mul_minmax_params params[restrict XNN_MIN_ELEMENTS(1)])
 {
   assert(batch != 0);
   assert(batch % sizeof(float) == 0);

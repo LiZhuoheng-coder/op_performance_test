@@ -11,6 +11,7 @@
 #include "op/max.h"
 #include "op/min.h"
 #include "op/mul.h"
+#include "op/div.h"
 
 
 typedef enum {
