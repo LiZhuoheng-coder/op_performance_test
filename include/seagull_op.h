@@ -2,6 +2,10 @@
 #define __SEAGULL_OP_H
 
 #include "xnnpack/common.h"
+#include "xnnpack/math.h"
+
+#include "op/gemm.h"
+#include "op/lrelu.h"
 
 #define XNN_MIN_ELEMENTS(count) static count
 
